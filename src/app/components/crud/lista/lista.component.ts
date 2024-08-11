@@ -13,7 +13,7 @@ import {
   GERENTE_TEXTS,
   DISTRITO_TEXTS
 } from '../../../constant/data.constants';
-import { faRotateRight, faPlus, faShapes } from '@fortawesome/free-solid-svg-icons';
+import { faRotateRight, faPlus, faShapes, faCloud } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -41,6 +41,7 @@ export class ListaComponent implements OnInit {
   icoRecharge = faRotateRight;
   icoAdd = faPlus;
   icoOptions = faShapes;
+  icoCloud = faCloud;
 
   constructor(
     private hospitalService: HospitalService,
