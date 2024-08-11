@@ -1,0 +1,115 @@
+<div class="container mx-auto">
+  <app-navbar></app-navbar>
+</div>
+
+<div
+  class="container mx-auto px-4 py-8 mt-6 shadow-xl shadow-black rounded-xl border-orange-600 border-2 mb-10 transition duration-500 ease-in-out animate-fade animate-once animate-ease-in">
+  <div class="mb-6">
+    <h1 class="text-3xl text-orange-600 font-bold mb-4 transition duration-500 ease-in-out">
+      Búsqueda de Hospitales</h1>
+    <div class="flex items-center">
+
+      <div class="mr-4">
+        <label class="inline-flex items-center">
+          <input type="radio" name="searchType" value="idHospital" [(ngModel)]="searchType"
+            class="form-radio transition duration-500 ease-in-out" />
+          <span class="ml-2">Buscar por ID de Hospital</span>
+        </label>
+      </div>
+      <div class="mr-4">
+        <label class="inline-flex items-center">
+          <input type="radio" name="searchType" value="idSede" [(ngModel)]="searchType"
+            class="form-radio transition duration-500 ease-in-out" />
+          <span class="ml-2">Filtrar por ID de Sede</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="flex items-center mt-4">
+      <input *ngIf="searchType === 'idHospital'" type="number" [(ngModel)]="searchIdHospital"
+        placeholder="ID de Hospital" class="border p-2 rounded-lg shadow-sm transition duration-500 ease-in-out" />
+      <select *ngIf="searchType === 'idSede'" [(ngModel)]="searchIdSede"
+        class="border p-2 rounded-lg shadow-sm ml-4 transition duration-500 ease-in-out">
+        <option [ngValue]="null">Seleccionar Sede</option>
+        <option *ngFor="let sede of sedes" [ngValue]="sede.id">{{ sede.text }}</option>
+      </select>
+      <button (click)="search()"
+        class="bg-orange-500 text-white p-2 rounded-lg shadow ml-4 transition duration-500 ease-in transform hover:scale-105">Buscar</button>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-3xl text-orange-600 font-bold transition duration-500 ease-in-out">Lista
+      de Hospitales</h1>
+    <div class="flex space-x-4">
+      <button (click)="reloadPage()"
+        class=" bg-orange-500 text-white px-3 rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105">
+        <fa-icon [icon]="icoRecharge"></fa-icon>
+      </button>
+      <button routerLink="/register"
+        class="bg-green-600 text-white p-2 px-3 rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105">
+        <fa-icon [icon]="icoAdd"></fa-icon>
+      </button>
+      <button routerLink="/"
+        class="bg-blue-600 text-white p-2 px-3 rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105">
+        <fa-icon [icon]="icoOptions"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white rounded-lg overflow-hidden transition duration-500 ease-in-out">
+      <thead class="bg-orange-600 text-white">
+        <tr>
+          <th class="py-3 px-6 text-left">ID</th>
+          <th class="py-3 px-6 text-left">Nombre</th>
+          <th class="py-3 px-6 text-left">Antigüedad</th>
+          <th class="py-3 px-6 text-left">Distrito</th>
+          <th class="py-3 px-6 text-left">Sede</th>
+          <th class="py-3 px-6 text-left">Gerente</th>
+          <th class="py-3 px-6 text-left">Condición</th>
+          <th class="py-3 px-6 text-left">Fecha Registro</th>
+          <th class="py-3 px-6 text-left">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hospital of hospitals" class="hover:bg-gray-100 transition duration-500 ease-in-out">
+          <td class="py-3 px-6">{{ hospital.idHospital }}</td>
+          <td class="py-3 px-6">{{ hospital.nombreHospital }}</td>
+          <td class="py-3 px-6">{{ hospital.antiguedad }}</td>
+          <td class="py-3 px-6">{{ getDistritoText(hospital.idDistrito) }}</td>
+          <td class="py-3 px-6">{{ getSedeText(hospital.idSede) }}</td>
+          <td class="py-3 px-6">{{ getGerenteText(hospital.idGerente) }}</td>
+          <td class="py-3 px-6">{{ getCondicionText(hospital.idCondicion) }}</td>
+          <td class="py-3 px-6">{{ hospital.fechaRegistro | date:'MM/dd/yyyy' }}</td>
+          <td class="py-3 px-6">
+            <button (click)="confirmDelete(hospital.idHospital)"
+              class="bg-red-500 text-white p-2 rounded-lg shadow ml-2 transition duration-500 ease-in-out transform hover:scale-105">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex items-center justify-between mt-6">
+    <span class="text-sm font-semibold text-orange-800">
+      Existen: {{ totalItems }} Hospital(es)
+    </span>
+    <p class="text-sm font-semibold text-orange-800">
+      Página {{ currentPage }} de {{ totalPages }}
+    </p>
+  </div>
+
+  <nav class="mt-6 flex justify-center">
+    <ul class="flex list-none space-x-2">
+      <li *ngFor="let page of [].constructor(totalPages); let i = index">
+        <button
+          class="px-4 py-2 border border-gray-400 rounded-lg shadow hover:bg-orange-200 hover:text-gray-800 transition duration-500 ease-in-out transform hover:scale-105"
+          [class.bg-orange-500]="currentPage === i + 1" [class.text-white]="currentPage === i + 1"
+          (click)="changePage(i + 1)">
+          {{ i + 1 }}
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

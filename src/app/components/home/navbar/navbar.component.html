@@ -1,0 +1,20 @@
+<nav class="bg-orange-600 text-white flex items-center justify-between px-4 py-2 shadow-lg shadow-black rounded-b-xl">
+
+  <!-- Logo e icono de inicio -->
+  <div class="flex items-center">
+    <a routerLink="/" class="text-white hover:text-orange-200 transition-colors duration-300 ease-in-out">
+      <fa-icon [icon]="icoHome"
+        class="transition-transform duration-300 ease-in-out transform hover:scale-110"></fa-icon>
+    </a>
+    <span class="ml-2 font-semibold text-lg animate-fade-in">{{ jwtClient.name }}, ¡bienvenido!</span>
+  </div>
+
+  <!-- Botón de cierre de sesión -->
+  <div>
+    <button routerLink="/logout"
+      class="text-white hover:bg-white hover:shadow-lg hover:shadow-black px-4 py-2 rounded-md hover:text-orange-600 transition-all duration-300 ease-in-out">
+      <fa-icon [icon]="icoDoor"
+        class="transition-transform duration-300 ease-in-out transform hover:scale-110"></fa-icon>
+    </button>
+  </div>
+</nav>
