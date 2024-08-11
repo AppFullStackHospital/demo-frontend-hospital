@@ -9,7 +9,7 @@ import { Jwtclient } from '../common/jwtclient';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private api: string = 'http://localhost:8090/api/security/v1';
+  private api: string = 'http://localhost:8090/security-service/api/v1';
 
   constructor(private httpClient: HttpClient) { }
 

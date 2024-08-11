@@ -7,8 +7,8 @@ import { Hospital } from '../common/hospital';
   providedIn: 'root'
 })
 export class HospitalService {
-  private apiJpa = 'http://localhost:8090/jpa/api/v1/hospitals';
-  private apiPlsql = 'http://localhost:8090/plsql/api/v2/hospitals'
+  private apiJpa = 'http://localhost:8090/hospital-service-orm/api/v1/hospitals';
+  private apiPlsql = 'http://localhost:8090/hospital-service-plsql/api/v2/hospitals'
 
   constructor(
     private httpClient: HttpClient
