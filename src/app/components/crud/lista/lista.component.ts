@@ -57,7 +57,7 @@ export class ListaComponent implements OnInit {
         this.hospitals = data.hospitals;
         this.totalPages = data.metadata.totalPages;
         this.totalItems = data.metadata.totalItems;
-        this.currentPage = 1;
+        this.currentPage = page;
         this.toastr.success('Hospitales cargados con éxito');
       },
       (error) => {

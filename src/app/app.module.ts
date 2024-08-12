@@ -17,7 +17,7 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
 import { NavbarComponent } from './components/home/navbar/navbar.component';
 
 const routes: Routes = [
-  { path: '', component: MenuComponent, canActivate: [authGuard] },
+  { path: '', component: MenuComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'hospitals', component: ListaComponent, canActivate: [authGuard] },

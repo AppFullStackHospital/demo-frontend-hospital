@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faHome, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faRightFromBracket, faHeartPulse, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { SessionStorageService } from '../../../services/session-storage.service';
 import { Jwtclient } from '../../../common/jwtclient';
 
@@ -9,18 +9,24 @@ import { Jwtclient } from '../../../common/jwtclient';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   icoHome = faHome;
   icoDoor = faRightFromBracket;
-  jwtClient: Jwtclient = new Jwtclient(
-    this.sessionStorage.getItem('token').id,
-    this.sessionStorage.getItem('token').token,
-    this.sessionStorage.getItem('token').type,
-    this.sessionStorage.getItem('token').name
-  );
-
+  icoEnterprise = faHeartPulse;
+  isLoggedIn: boolean = false;
+  userName: string | null = null;
+  isDropdownOpen: boolean = false;
   constructor(
-    private router: Router,
     private sessionStorage: SessionStorageService) { }
 
+  ngOnInit(): void {
+    const token = this.sessionStorage.getItem('token');
+    if (token) {
+      this.isLoggedIn = true;
+      this.userName = token.name;
+    } else {
+      this.isLoggedIn = false;
+      this.userName = null;
+    }
+  }
 }

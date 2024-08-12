@@ -1,39 +1,136 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100 animate-fade-down animate-once animate-ease-in">
-  <div class="bg-white shadow-xl rounded-2xl p-8 w-96">
-    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Menú Principal</h1>
-    <div class="grid grid-cols-2 gap-6">
-      <div class="space-y-4">
-        <a href="/hospitals" class="block">
-          <button
-            class="w-full bg-blue-600 text-white text-center py-2 rounded-lg transition-transform duration-300 ease-in-out hover:bg-blue-700 hover:scale-110">
-            Hospitales
-          </button>
-        </a>
-        <a href="/register" class="block">
-          <button
-            class="w-full bg-green-600 text-white text-center py-2 rounded-lg transition-transform duration-300 ease-in-out hover:bg-green-700 hover:scale-110">
-            Registros
-          </button>
-        </a>
-        <a href="/update" class="block">
-          <button
-            class="w-full bg-yellow-500 text-white text-center py-2 rounded-lg transition-transform duration-300 ease-in-out hover:bg-yellow-600 hover:scale-110">
-            Actualizaciones
-          </button>
-        </a>
-        <a href="/logout" class="block">
-          <button
-            class="w-full bg-red-500 text-white text-center py-2 rounded-lg transition-transform duration-300 ease-in-out hover:bg-red-600 hover:scale-110">
-            Cerrar sesión
-          </button>
-        </a>
-      </div>
-      <div class="flex items-center justify-center">
-        <a href="https://www.angelogomez.pro/" target="_blank">
-          <img src="/svg/Logo.svg" alt="Logo" class="w-48 h-48 transition-transform duration-300 ease-in-out hover:scale-125
-            animate-wiggle animate-infinite animate-ease-linear">
-        </a>
-      </div>
+<app-navbar></app-navbar>
+
+<body class="px-40 flex flex-1 justify-center py-5 animate-fade animate-once animate-ease-in">
+  <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+    <div class="flex flex-wrap justify-between gap-3 p-4">
+      <p class="text-gray-800 tracking-light text-[32px] font-bold leading-tight min-w-72">Hospital System
+      </p>
     </div>
+    <h3 class="text-gray-600 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Gestión</h3>
+
+    <a routerLink="/hospitals"
+      class="group hover:bg-blue-300 rounded-2xl transition-all ease-in flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+      <div class="flex items-center gap-4">
+        <div
+          class="text-[#25292e] flex items-center justify-center rounded-lg bg-[#f0f2f4] group-hover:bg-blue-200 transition-all ease-in shrink-0 size-12"
+          data-icon="Stethoscope" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoList" class="group-hover:text-blue-500 transition-all ease-in "></fa-icon>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p
+            class="text-gray-800 group-hover:text-blue-700 transition-all ease-in text-base font-bold leading-normal line-clamp-1">
+            Hospital List</p>
+          <p
+            class="text-[#637588] group-hover:text-blue-500 transition-all ease-in text-sm font-normal leading-normal line-clamp-2">
+            Read Operation</p>
+        </div>
+      </div>
+      <div class="shrink-0">
+        <div
+          class="text-[#737373] group-hover:text-blue-500 transition-all ease-in flex size-7 items-center justify-center"
+          data-icon="CaretRight" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoFlechaDerecha"></fa-icon>
+        </div>
+      </div>
+    </a>
+
+    <a routerLink="/register"
+      class="group hover:bg-blue-300 rounded-2xl transition-all ease-in flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+      <div class="flex items-center gap-4">
+        <div
+          class="text-[#25292e] flex items-center justify-center rounded-lg bg-[#f0f2f4] group-hover:bg-blue-200 transition-all ease-in shrink-0 size-12"
+          data-icon="Syringe" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoAdd" class="group-hover:text-blue-500 transition-all ease-in "></fa-icon>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p
+            class="text-gray-800 group-hover:text-blue-700 transition-all ease-in text-base font-bold leading-bold line-clamp-1">
+            New Hospital</p>
+          <p
+            class="text-[#637588] group-hover:text-blue-500 transition-all ease-in text-sm font-normal leading-normal line-clamp-2">
+            Create Operation</p>
+        </div>
+      </div>
+      <div class="shrink-0">
+        <div
+          class="text-[#737373] group-hover:text-blue-500 transition-all ease-in flex size-7 items-center justify-center"
+          data-icon="CaretRight" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoFlechaDerecha"></fa-icon>
+        </div>
+      </div>
+    </a>
+
+    <a routerLink="/update"
+      class="group hover:bg-blue-300 rounded-2xl transition-all ease-in flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+      <div class="flex items-center gap-4">
+        <div
+          class="text-[#25292e] flex items-center justify-center rounded-lg bg-[#f0f2f4] group-hover:bg-blue-200 transition-all ease-in shrink-0 size-12"
+          data-icon="Heartbeat" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoUpdate" class="group-hover:text-blue-500 transition-all ease-in "></fa-icon>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p
+            class="text-gray-800 group-hover:text-blue-700 transition-all ease-in text-base font-bold leading-normal line-clamp-1">
+            Update Hospital</p>
+          <p
+            class="text-[#637588] group-hover:text-blue-500 transition-all ease-in text-sm font-normal leading-normal line-clamp-2">
+            Update Operation</p>
+        </div>
+      </div>
+      <div class="shrink-0">
+        <div
+          class="text-[#737373] group-hover:text-blue-500 transition-all ease-in flex size-7 items-center justify-center"
+          data-icon="CaretRight" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoFlechaDerecha"></fa-icon>
+        </div>
+      </div>
+    </a>
+
+    <a routerLink="/hospitals"
+      class="group hover:bg-blue-300 rounded-2xl transition-all ease-in flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+      <div class="flex items-center gap-4">
+        <div
+          class="text-[#25292e] flex items-center justify-center rounded-lg bg-[#f0f2f4] group-hover:bg-blue-200 transition-all ease-in shrink-0 size-12"
+          data-icon="Heartbeat" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoDelete" class="group-hover:text-blue-500 transition-all ease-in"></fa-icon>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p
+            class="text-gray-800 group-hover:text-blue-700 transition-all ease-in text-base font-bold leading-normal line-clamp-1">
+            Delete Hospital</p>
+          <p
+            class="text-[#637588] group-hover:text-blue-500 transition-all ease-in text-sm font-normal leading-normal line-clamp-2">
+            Delete Operation</p>
+        </div>
+      </div>
+      <div class="shrink-0">
+        <div
+          class="text-[#737373] group-hover:text-blue-500 transition-all ease-in flex size-7 items-center justify-center"
+          data-icon="CaretRight" data-size="24px" data-weight="regular">
+          <fa-icon [icon]="icoFlechaDerecha"></fa-icon>
+        </div>
+      </div>
+    </a>
+    <ng-container *ngIf="isLoggedIn">
+      <a routerLink="/logout"
+        class="group hover:bg-red-300 transition-all ease-in rounded-2xl flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+        <div class="flex items-center gap-4">
+          <div
+            class="text-[#25292e] flex items-center justify-center rounded-lg bg-[#f0f2f4] group-hover:bg-red-200 transition-all ease-in shrink-0 size-12"
+            data-icon="Heartbeat" data-size="24px" data-weight="regular">
+            <fa-icon [icon]="icoPowerOff" class="group-hover:text-red-500 transition-all ease-in"></fa-icon>
+          </div>
+          <div class="flex flex-col justify-center">
+            <p
+              class="text-gray-800 group-hover:text-red-700 transition-all ease-in text-base font-bold leading-normal line-clamp-1">
+              End Session
+            </p>
+            <p
+              class="text-[#637588] group-hover:text-red-500 transition-all ease-in text-sm font-normal leading-normal line-clamp-2">
+              Log Out</p>
+          </div>
+        </div>
+      </a>
+    </ng-container>
   </div>
-</div>
+</body>

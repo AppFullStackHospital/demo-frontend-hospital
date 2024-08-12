@@ -1,32 +1,53 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-sm">
-    <h1 class="text-2xl font-bold mb-6 text-center">Inicio de Sesión</h1>
-    <form (ngSubmit)="login()">
-      <div class="mb-4">
-        <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-        <input [(ngModel)]="username" type="email" id="username" name="username"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="Email">
-      </div>
-      <div class="mb-6">
-        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Contraseña:</label>
-        <input [(ngModel)]="password" type="password" id="password" name="password"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          placeholder="********">
-        <div class="text-right mt-2">
-          <a href="#" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">¿Olvidaste
-            tu
-            contraseña?</a>
+<header class="flex items-center justify-between px-10 py-3 border-b border-gray-200 rounded-t-lg ">
+  <a routerLink="" class="flex items-center gap-4 text-black">
+    <div class="text-xl">
+      <fa-icon [icon]="icoEnterprise"></fa-icon>
+    </div>
+    <h2 class="text-lg font-bold">MediCare</h2>
+  </a>
+</header>
+<div style="min-height: calc(100vh - 53px);"
+  class="flex items-center justify-center bg-white animate-fade animate-once animate-ease-in">
+
+  <div class="bg-white shadow-md rounded-lg w-full max-w-[512px]">
+    <div class="px-10 py-5">
+      <h3 class="text-center text-2xl font-bold text-black mb-4">Log in to MediCare</h3>
+
+      <form (ngSubmit)="login()">
+        <div class="mb-4">
+          <label class="block text-black text-base font-medium leading-normal pb-2" for="email">Email</label>
+          <input [(ngModel)]="username" id="email" name="username" type="email" placeholder="example@gmail.com"
+            class="form-input w-full h-14 rounded-xl bg-gray-200 text-black p-4 text-base leading-normal focus:outline-none focus:ring-0 focus:border-none" />
         </div>
-      </div>
-      <div class="flex items-center justify-end">
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit" [disabled]="isLoading">
-          <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          <span *ngIf="!isLoading">Iniciar Sesión</span>
-        </button>
-      </div>
-    </form>
+
+        <div class="mb-4">
+          <label class="block text-black text-base font-medium leading-normal pb-2" for="password">Password</label>
+          <input [(ngModel)]="password" id="password" name="password" type="password" placeholder="Password"
+            class="form-input w-full h-14 rounded-xl bg-gray-200 text-black p-4 text-base leading-normal focus:outline-none focus:ring-0 focus:border-none" />
+        </div>
+
+        <div class="flex items-center gap-3 py-3">
+          <input type="checkbox" id="remember"
+            class="h-5 w-5 rounded border-gray-300 text-green-500 focus:ring-0 focus:border-gray-300" />
+          <label for="remember" class="text-black text-base leading-normal">Remember me</label>
+        </div>
+
+        <div class="mt-4">
+          <button type="submit"
+            class="w-full h-10 rounded-xl bg-blue-500 text-white font-bold tracking-wider text-sm leading-normal"
+            [disabled]="isLoading">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span *ngIf="!isLoading">Log in</span>
+          </button>
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="#" class="text-gray-500 text-sm">Don't have an account?</a>
+        </div>
+        <div class="text-center mt-1">
+          <a href="#" class="text-gray-500 text-sm">Sign up</a>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

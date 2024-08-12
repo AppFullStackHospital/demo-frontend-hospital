@@ -1,24 +1,25 @@
-<div class="container mx-auto">
-  <app-navbar></app-navbar>
-</div>
+<app-navbar></app-navbar>
 <div
-  class="container mx-auto px-4 py-8 mt-6 shadow-xl shadow-black rounded-xl border-orange-600 border-2 animate-fade animate-once animate-ease-in">
+  class="container mx-auto px-4 py-8 mt-6 rounded-xl border-gray-200 border-2 animate-fade animate-once animate-ease-in">
   <!-- Form Header -->
   <div class="mb-6">
-    <h1 class="text-3xl font-bold mb-4 text-orange-600">
-      {{ formMode === 'register' ? 'Registrar Hospital' : 'Actualizar Hospital' }}
+    <h1 class="text-3xl font-bold mb-4 text-gray-800">
+      Hospital System
     </h1>
+    <h3 class="text-gray-600 text-lg font-bold leading-tight tracking-[-0.015em] pb-2">
+      {{ formMode === 'register' ? 'Registrar Hospital' : 'Actualizar Hospital' }}
+    </h3>
   </div>
 
   <!-- Form Mode Selection -->
   <div class="mb-6 flex items-center">
     <label class="inline-flex items-center mr-4">
       <input type="radio" name="formMode" value="register" [(ngModel)]="formMode" class="form-radio" />
-      <span class="ml-2">Registrar</span>
+      <span class="ml-2 font-semibold">Registrar</span>
     </label>
     <label class="inline-flex items-center">
       <input type="radio" name="formMode" value="update" [(ngModel)]="formMode" class="form-radio" />
-      <span class="ml-2">Actualizar</span>
+      <span class="ml-2 font-semibold">Actualizar</span>
     </label>
   </div>
 
@@ -32,18 +33,18 @@
         <div class="flex">
           <input type="number" [(ngModel)]="hospital.idHospital" name="idHospitalRegister"
             [ngClass]="{'border-red-500': showErrors && !hospital.idHospital}"
-            class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500"
+            class="bg-gray-200 text-gray-500 border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out focus:border-blue-500"
             placeholder="ID de Hospital" disabled />
         </div>
       </div>
 
       <!-- ID Hospital - Update Mode -->
       <div *ngIf="formMode === 'update'" class="relative">
-        <label class="block text-gray-700">ID Hospital</label>
+        <label class="block text-gray-700">ID Hospital <span class="text-red-600 text-lg font-bold">*</span> </label>
         <div class="flex">
           <input type="number" [(ngModel)]="hospital.idHospital" name="idHospitalUpdate"
             [ngClass]="{'border-red-500': showErrors && !hospital.idHospital}"
-            class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500"
+            class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out focus:border-blue-500"
             placeholder="ID de Hospital" />
           <button *ngIf="formMode === 'update'" (click)="searchHospitalById($event)"
             class="ml-2 bg-blue-500 text-white p-2 rounded-lg shadow transition duration-300 ease-in-out transform hover:scale-110">
@@ -54,10 +55,10 @@
 
       <!-- ID Distrito -->
       <div>
-        <label class="block text-gray-700">Distrito</label>
+        <label class="block text-gray-700">Distrito <span class="text-red-600 text-lg font-bold">*</span></label>
         <select [(ngModel)]="hospital.idDistrito" name="idDistrito"
           [ngClass]="{'border-red-500': showErrors && !hospital.idDistrito}"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500">
+          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500">
           <option [ngValue]="0">Selecciona un Distrito</option>
           <option *ngFor="let distrito of distritos" [value]="distrito.id">
             {{ distrito.text }}
@@ -67,37 +68,37 @@
 
       <!-- Nombre Hospital -->
       <div>
-        <label class="block text-gray-700">Nombre Hospital</label>
+        <label class="block text-gray-700">Nombre Hospital <span class="text-red-600 text-lg font-bold">*</span></label>
         <input type="text" [(ngModel)]="hospital.nombreHospital" name="nombreHospital"
           [ngClass]="{'border-red-500': showErrors && !hospital.nombreHospital}"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500"
+          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500"
           placeholder="Nombre de Hospital" />
       </div>
 
       <!-- Antigüedad -->
       <div>
-        <label class="block text-gray-700">Antigüedad</label>
+        <label class="block text-gray-700">Antigüedad <span class="text-red-600 text-lg font-bold">*</span></label>
         <input type="number" [(ngModel)]="hospital.antiguedad" name="antiguedad"
           [ngClass]="{'border-red-500': showErrors && !hospital.antiguedad}"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500"
+          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500"
           placeholder="Antigüedad" />
       </div>
 
       <!-- Área -->
       <div>
-        <label class="block text-gray-700">Área</label>
+        <label class="block text-gray-700">Área <span class="text-red-600 text-lg font-bold">*</span></label>
         <input type="number" [(ngModel)]="hospital.area" name="area"
           [ngClass]="{'border-red-500': showErrors && !hospital.area}"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500"
+          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500"
           placeholder="Área" />
       </div>
 
       <!-- ID Sede -->
       <div>
-        <label class="block text-gray-700">Sede</label>
+        <label class="block text-gray-700">Sede <span class="text-red-600 text-lg font-bold">*</span></label>
         <select [(ngModel)]="hospital.idSede" name="idSede"
           [ngClass]="{'border-red-500': showErrors && !hospital.idSede}"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500">
+          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500">
           <option [ngValue]="0">Selecciona una Sede</option>
           <option *ngFor="let sede of sedes" [value]="sede.id">
             {{ sede.text }}
@@ -107,10 +108,10 @@
 
       <!-- ID Gerente -->
       <div>
-        <label class="block text-gray-700">Gerente</label>
+        <label class="block text-gray-700">Gerente <span class="text-red-600 text-lg font-bold">*</span></label>
         <select [(ngModel)]="hospital.idGerente" name="idGerente"
           [ngClass]="{'border-red-500': showErrors && !hospital.idGerente}"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500">
+          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500">
           <option [ngValue]="0">Selecciona un Gerente</option>
           <option *ngFor="let gerente of gerentes" [value]="gerente.id">
             {{ gerente.text }}
@@ -120,10 +121,10 @@
 
       <!-- ID Condición -->
       <div>
-        <label class="block text-gray-700">Condición</label>
+        <label class="block text-gray-700">Condición <span class="text-red-600 text-lg font-bold">*</span></label>
         <select [(ngModel)]="hospital.idCondicion" name="idCondicion"
           [ngClass]="{'border-red-500': showErrors && !hospital.idCondicion}"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500">
+          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500">
           <option [ngValue]="0">Selecciona una Condición</option>
           <option *ngFor="let condicion of condiciones" [value]="condicion.id">
             {{ condicion.text }}
@@ -135,7 +136,7 @@
       <div>
         <label class="block text-gray-700">Fecha de Registro</label>
         <input type="text" value="{{ hospital.fechaRegistro | date: 'dd/MM/yyyy' }}" name="fechaRegistro"
-          class="border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:scale-105 focus:border-blue-500"
+          class="bg-gray-200 text-gray-500 border p-2 rounded-lg shadow-sm w-full transition duration-300 ease-in-out transform focus:border-blue-500"
           disabled />
       </div>
     </div>
@@ -144,12 +145,12 @@
     <div class="text-center flex justify-center gap-4">
       <!-- Submit Button -->
       <button type="submit"
-        class="bg-green-500 text-white p-2 rounded-lg shadow transition duration-300 ease-in-out transform hover:scale-110">
+        class="hover:bg-green-500 border-2 border-green-600 hover:text-white text-gray-900 p-2 rounded-lg shadow transition duration-300 ease-in-out transform hover:scale-110">
         {{ formMode === 'register' ? 'Registrar Hospital' : 'Actualizar Hospital' }}
       </button>
       <!-- Reset Button -->
       <button type="button" (click)="resetForm()"
-        class="hover:bg-gray-500 border-2 border-gray-500 text-gray-500 hover:text-white p-2 rounded-lg shadow transition duration-300 ease-in-out transform hover:scale-110">
+        class="hover:bg-white bg-gray-500 border-2 border-gray-500 text-white hover:text-gray-900 p-2 rounded-lg shadow transition duration-300 ease-in-out transform hover:scale-110">
         Limpiar
       </button>
     </div>

@@ -5,6 +5,7 @@ import { SessionStorageService } from '../../../services/session-storage.service
 import { ToastrService } from 'ngx-toastr';
 import { Jwtclient } from '../../../common/jwtclient';
 import { Userdto } from '../../../common/userdto';
+import { faHeartPulse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   isLoading: boolean = false;
+  icoEnterprise = faHeartPulse;
 
   ngOnInit(): void { }
 
